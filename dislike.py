@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 api_call = os.environ.get("API_URL")
 API_KEY= os.environ.get("API_KEY")
-
+list_id=[]
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 if os.path.exists("youtube_id.txt"):
