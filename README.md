@@ -1,7 +1,7 @@
 # This python script prints the total number of dislikes in the current youtube video you are watching
-<p align='left'>
+<p align='center'>
 	<img src='https://user-images.githubusercontent.com/72430628/161373631-d6afdc51-6dfb-412a-a993-d81cf933a8a3.gif'>
-	<img align='top' src='https://user-images.githubusercontent.com/72430628/161373144-797c7f22-cb30-4768-8566-3b95c0ee109b.png'>
+	<img src='https://user-images.githubusercontent.com/72430628/161373144-797c7f22-cb30-4768-8566-3b95c0ee109b.png'>
 </p>
 
 
