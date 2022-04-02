@@ -1,0 +1,5 @@
+simplejson
+python-dotenv==0.19.2
+pywinauto==0.6.8
+requests==2.26.0
+urllib3==1.26.6
