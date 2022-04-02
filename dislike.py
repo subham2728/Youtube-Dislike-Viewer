@@ -5,13 +5,19 @@ import simplejson
 from pywinauto import Application
 import os
 from dotenv import load_dotenv
-# import time
 
 load_dotenv()
 api_call = os.environ.get("API_URL")
 API_KEY= os.environ.get("API_KEY")
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+
+if os.path.exists("youtube_id.txt"):
+    f = open('youtube_id.txt', 'r+')
+    f.truncate(0) 
+    f.close()
+else:
+    pass
 
 def splitURL(url):
     video_id=url.split('=')
@@ -55,24 +61,26 @@ def getTitle(VIDEO_ID):
 if __name__=='__main__':
     while(True):
         list_id =[]
-        check_list = []
+        f = open('youtube_id.txt',"r+")
+        check = f.read()
         youtube_video_url_chrome = str(fetchURl())
         if(youtube_video_url_chrome != ""):
             if 'youtube.com/' in youtube_video_url_chrome:
                 id_to_api = splitURL(youtube_video_url_chrome)
-                check_list.append(id_to_api)
-                # print(check_list)
-                if(set(check_list)==set(list_id)):
+                list_id.append(id_to_api)
+                if id_to_api in check:
                     pass
                 else:
-                    list_id.append(id_to_api)
-                    # print(list_id)
+                    with open('youtube_id.txt', 'w') as f:
+                        f.write('\n'.join(list_id))
+                    f.close()
                     url_api = apiCall(id_to_api)
                     number_of_dislike = dislikeCount(url_api)
                     title,channel_title = getTitle(id_to_api)
                     if(number_of_dislike==None):
                         pass
                     else:
-                        print(title,'\n\tby : ',channel_title,'\n\thas : ', number_of_dislike,'dislikes')
+                        print(title,'\nby : ',channel_title,'\nhas : ', number_of_dislike,'dislikes')
+                        print('----------------------------')
             else:
                 pass
